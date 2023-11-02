@@ -26,11 +26,16 @@ export const useFormValidation = ({ formName, defaultValues }) => {
                 setFormValues(prevState => ({ ...defaultValues, [formName]: { ...prevState[formName], [key]: value } }))
             })
     }
-    const validate = async (values) =>
-        Object.entries(values)
-            .forEach(([key, value]) =>
-                setErrors(prevState =>
-                    ({ ...prevState, [formName]: { ...prevState[formName], [key]: !value?.length } })))
+    const validate = async (values) => {
+        return new Promise((resolve) => {
+            Object.entries(values)
+                .forEach(([key, value]) =>
+                    setErrors(prevState =>
+                        ({ ...prevState, [formName]: { ...prevState[formName], [key]: !value?.length } }))
+                );
+            resolve();
+        });
+    }
 
     context = React.useMemo(() => {
         return {

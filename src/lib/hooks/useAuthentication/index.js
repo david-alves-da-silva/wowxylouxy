@@ -3,54 +3,54 @@ import { app } from '../../mongoDB-sdk'
 import { addUser, getUser } from '../../service'
 import { handleLogin, handleAuthenticationError, handleLogout } from '../../state/actions/authentication'
 
-const useAuthentication = (dispatch) => { 
-    function handleUserRegistration(user) { 
-        return new Promise(resolve => { 
+const useAuthentication = (dispatch) => {
+    function handleUserRegistration(user) {
+        return new Promise(resolve => {
             app.emailPasswordAuth
                 .registerUser(user.email, user.password)
-                .then(async () => { 
+                .then(async () => {
                     app.logIn(Realm.Credentials.emailPassword(user.email, user.password))
-                        .then(() => { 
+                        .then(() => {
                             addUser(user)
                             dispatch(handleLogin(user))
-                            resolve(user)  
+                            resolve(user)
                         })
                 })
                 .catch(err => dispatch(handleAuthenticationError(err)))
-            })
+        })
     }
-    function handleUserLogin(email, password) { 
+    function handleUserLogin(email, password) {
         return new Promise(resolve => {
             app.logIn(Realm.Credentials.emailPassword(email, password))
-                .then(async () => { 
+                .then(async () => {
                     // verify current user 
                     const currentUser = await app.currentUser
                     // retrieve user profile
                     getUser(currentUser.email)
-                        .then(userProfile => { 
+                        .then(userProfile => {
                             dispatch(handleLogin(userProfile))
-                                resolve(currentUser)
-                        }) 
+                            resolve(currentUser)
+                        })
                 })
                 .catch(err => dispatch(handleAuthenticationError(err)))
-            })
-    } 
-    async function handleUserLogout() { 
+        })
+    }
+    async function handleUserLogout() {
         app.currentUser?.logOut()
             .then(() => dispatch(handleLogout()))
             .catch(err => console.log(err))
     }
-    async function handleAuthentication() { 
+    async function handleAuthentication() {
         const currentUser = await app.currentUser
         getUser(currentUser?.email)
             .then(userProfile => !!currentUser && dispatch(handleLogin(userProfile)))
-            .catch(err =>  dispatch(handleAuthenticationError(err)))
+            .catch(err => dispatch(handleAuthenticationError(err)))
     }
     return {
         handleUserRegistration,
         handleUserLogin,
-        handleUserLogout, 
-        handleAuthentication    
+        handleUserLogout,
+        handleAuthentication
     }
 }
 export default useAuthentication

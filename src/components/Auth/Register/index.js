@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from "react-router-dom";
+import React, { useEffect } from 'react'
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormValidation } from '../../../lib/hooks/useFormValidation'
 import useAuthentication from '../../../lib/hooks/useAuthentication'
@@ -28,17 +28,18 @@ const defaultValues = {
 	confirm_password: 'test12345'
 }
 const options = ['Uzbekistan', 'Russia', 'United States', 'India', 'Afganistan']
-const Register = ({ history }) => {
+const Register = () => {
+	const history = useHistory()
 	const dispatch = useDispatch()
 	const { current, error } = useSelector(state => state.user);
 	const { formValues, validate, handleOnChange, isValid } = useFormValidation({ formName: 'register', defaultValues: defaultValues })
 	const { first, last, email, city, country, gender, password, confirm_password } = formValues['register'] ?? {}
-	React.useEffect(() => {
-		async function fetchData() {
+	useEffect(() => {
+		const fetchData = async () => {
 			await validate(formValues['register'] ?? {});
-		}
+		};
 		fetchData();
-	}, [formValues]);
+	}, [formValues, validate]);
 	const { handleUserRegistration } = useAuthentication(dispatch)
 
 	const handleOnSubmit = async (e) => {
@@ -46,7 +47,7 @@ const Register = ({ history }) => {
 		const newUser = { first, last, city, country, gender, email, password }
 		const currentUser = await handleUserRegistration(newUser)
 		if (currentUser) {
-			setTimeout(() => history.push('/'), 2000)
+			history.push('/')
 		}
 	}
 	return (
@@ -54,8 +55,8 @@ const Register = ({ history }) => {
 			<div className="card mx-auto" style={{ maxWidth: '520px', marginTop: '140px' }} >
 				<article className="card-body">
 					<header className="mb-4"><h4 className="card-title">Sign up</h4></header>
-					<ErrorMessage error={error} />
-					<Alert isVisible={!!current} />
+					<ErrorMessage error={!error} />
+					<Alert isVisible={current} />
 					<form name="register" onSubmit={handleOnSubmit}>
 						<div className="form-row">
 							<Input.Text label="First Name" name='first' value={first} onChange={handleOnChange} />
@@ -78,7 +79,7 @@ const Register = ({ history }) => {
 							<Input.ConfirmPassword label="Repeat password" value={confirm_password} style={{ padding: 0 }} col="6" onChange={handleOnChange} />
 						</div>
 						<div className="form-group">
-							<Input.Submit classNamees="btn-primary btn-block" title="Register" disabled={!isValid} />
+							<Input.Submit classNames="btn-primary btn-block" title="Register" disabled={!isValid} />
 						</div>
 						<div className="form-group">
 							<Input.Checkbox name='terms' col="6" onChange={handleOnChange}>I agree with <a href="#">terms and contitions</a></Input.Checkbox>

@@ -34,7 +34,7 @@ const Login = ({ history }) => {
     };
 
     fetchData();
-  }, [formValues, handleOnChange]);
+  }, [formValues, validate]);
 
   const handleOnSubmit = async (e) => {
     e.preventDefault()
@@ -47,8 +47,8 @@ const Login = ({ history }) => {
     <div className="card mx-auto" style={{ maxWidth: '380px', marginTop: '200px' }}>
       <div className="card-body">
         <h4 className="card-title mb-4">Sign in</h4>
-        <ErrorMessage error={error} />
-        <Alert isVisible={!!current} />
+        <ErrorMessage error={!error} />
+        <Alert isVisible={current} />
 
         <form name="login" onSubmit={handleOnSubmit}>
           {/* 
@@ -65,7 +65,7 @@ const Login = ({ history }) => {
             <Input.Checkbox col="6">Remember</Input.Checkbox>
           </div>
           <div className="form-group">
-            <Input.Submit classNamees="btn-primary btn-block" title="Login" disabled={!isValid} />
+            <Input.Submit classNames="btn-primary btn-block" title="Login" disabled={!isValid} />
           </div>
         </form>
       </div>
