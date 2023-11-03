@@ -13,10 +13,10 @@ const Gallery = () => {
 	const state = useSelector(state => ({ ...state.products }));
 	const { items, isLoading } = state
 	React.useEffect(() => {
-		async function fetcData() {
+		async function fetchData() {
 			await dispatch(fetchProducts())
 		};
-		fetcData();
+		fetchData();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 
 	}, []);
