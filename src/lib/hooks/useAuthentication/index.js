@@ -1,5 +1,5 @@
 import * as Realm from "realm-web";
-import { app } from '../../mongoDB-sdk'
+import { app } from '../../service/mongoDB-sdk'
 import { addUser, getUser } from '../../service'
 import { handleLogin, handleAuthenticationError, handleLogout } from '../../state/actions/authentication'
 
