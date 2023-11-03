@@ -4,17 +4,21 @@ import { addUser, getUser } from '../../service'
 import { handleLogin, handleAuthenticationError, handleLogout } from '../../state/actions/authentication'
 
 const useAuthentication = (dispatch) => {
-    function handleUserRegistration(user) {
-        return new Promise(resolve => {
+    function handleUserRegistration(newUser) {
+        return new Promise((resolve) => {
             app.emailPasswordAuth
-                .registerUser(user.email, user.password)
-                .then(async () => {
-                    app.logIn(Realm.Credentials.emailPassword(user.email, user.password))
-                        .then(() => {
-                            addUser(user)
-                            dispatch(handleLogin(user))
-                            resolve(user)
-                        })
+                .registerUser(newUser.email, newUser.password)
+                .then(() => {
+                    const credentials = Realm.Credentials.emailPassword(
+                        newUser.email,
+                        newUser.password
+                    )
+                    resolve()
+                    app.logIn(credentials).then((user) => {
+                        addUser(user)
+                        resolve(user)
+                        dispatch(handleLogin(user))
+                    })
                 })
                 .catch(err => dispatch(handleAuthenticationError(err)))
         })

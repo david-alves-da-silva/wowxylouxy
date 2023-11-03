@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormValidation } from '../../../lib/hooks/useFormValidation'
 import useAuthentication from '../../../lib/hooks/useAuthentication'
@@ -22,7 +22,8 @@ const defaultValues = {
   email: 'sandy@gmail.com',
   password: '',
 }
-const Login = ({ history }) => {
+const Login = () => {
+  const history = useHistory()
   const dispatch = useDispatch()
   const { current, error } = useSelector(state => ({ ...state.user }));
   const { formValues, validate, handleOnChange, isValid } = useFormValidation({ formName: 'login', defaultValues: defaultValues })

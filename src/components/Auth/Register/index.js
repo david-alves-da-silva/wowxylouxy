@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link, useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormValidation } from '../../../lib/hooks/useFormValidation'
 import useAuthentication from '../../../lib/hooks/useAuthentication'
@@ -14,7 +14,7 @@ const Alert = ({ isVisible }) => (
 const ErrorMessage = ({ error }) => (
 	error &&
 	<div className="alert alert-danger mt-3">
-		<p className="icontext]" style={{ color: 'crimson' }}><i className="icon text-danger fas fa-exclamation-circle"></i> {' '}{error?.error}</p>
+		<p className="icontext" style={{ color: 'crimson' }}><i className="icon text-danger fas fa-exclamation-circle"></i> {' '}{error?.error}</p>
 	</div>
 )
 
@@ -46,8 +46,11 @@ const Register = () => {
 		e.preventDefault()
 		const newUser = { first, last, city, country, gender, email, password }
 		const currentUser = await handleUserRegistration(newUser)
+			.then((user) => {
+				console.log(`user successfully registered ${user}`)
+			})
 		if (currentUser) {
-			history.push('/')
+			setTimeout(() => history.push('/'), 2000)
 		}
 	}
 	return (
@@ -55,8 +58,8 @@ const Register = () => {
 			<div className="card mx-auto" style={{ maxWidth: '520px', marginTop: '140px' }} >
 				<article className="card-body">
 					<header className="mb-4"><h4 className="card-title">Sign up</h4></header>
-					<ErrorMessage error={!error} />
-					<Alert isVisible={current} />
+					<ErrorMessage error={error} />
+					<Alert isVisible={!!current} />
 					<form name="register" onSubmit={handleOnSubmit}>
 						<div className="form-row">
 							<Input.Text label="First Name" name='first' value={first} onChange={handleOnChange} />
@@ -82,7 +85,7 @@ const Register = () => {
 							<Input.Submit classNames="btn-primary btn-block" title="Register" disabled={!isValid} />
 						</div>
 						<div className="form-group">
-							<Input.Checkbox name='terms' col="6" onChange={handleOnChange}>I agree with <a href="#">terms and contitions</a></Input.Checkbox>
+							<Input.Checkbox name='terms' col="6" onChange={handleOnChange}>I agree with  <Link to='/login'>terms and contitions</Link></Input.Checkbox>
 						</div>
 					</form>
 				</article>
