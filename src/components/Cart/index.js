@@ -1,23 +1,32 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import Layout from './Layout'
+import { selectCartTotal } from "../../lib/state/selectors";
+import Layout from "./Layout";
 import Row from "./Row";
-import { selectCartTotal } from '../../lib/state/selectors'
 
 const Cart = () => {
-	const { items } = useSelector(state => ({ ...state.cart }));
-	const total = useSelector(selectCartTotal).toFixed(2)
+	const { items } = useSelector((state) => ({ ...state.cart }));
+	const total = useSelector(selectCartTotal);
 	useEffect(() => {
-		localStorage.setItem('items', JSON.stringify(items))
-		localStorage.setItem('total', total)
-	}, [])
+		localStorage.setItem("items", JSON.stringify(items));
+		localStorage.setItem("total", total);
+	}, []);
 	return (
 		<>
 			<Layout>
-				{items.length === 0 && <div className="d-flex align-items-center ml-3" style={{ fontSize: '22px' }}><p>Your Cart is Empty</p></div>}
-				{items.map(item => <Row key={item.id} {...item} />)}
+				{false && (
+					<p
+						className="d-flex justify-content-center align-items-center"
+						style={{ fontSize: 20 }}
+					>
+						Your Cart is Empty
+					</p>
+				)}
+				{items.map((item) => (
+					<Row key={item.id} {...item} />
+				))}
 			</Layout>
 		</>
-	)
-}
-export default Cart
+	);
+};
+export default Cart;

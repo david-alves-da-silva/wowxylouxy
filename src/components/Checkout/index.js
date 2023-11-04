@@ -1,9 +1,8 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useFormValidation } from "../../lib/hooks/useFormValidation";
-import useAuthentication from "../../lib/hooks/useAuthentication";
 import { setDelivery } from "../../lib/state/actions";
-
+import { selectCartTotal } from "../../lib/state/selectors";
 import * as Input from "../Auth/Input";
 import Payment from "./Payment";
 import DeliveryBox from "./DeliveryBox";
@@ -14,37 +13,33 @@ const defaultValues = {
 };
 
 const options = ["Canada", "Russia", "United States", "India", "Afganistan"];
+
 const Checkout = () => {
   const dispatch = useDispatch();
-  const { handleAuthentication } = useAuthentication(dispatch);
-  const { user } = useSelector((state) => ({ ...state.user }));
-  const { delivery } = useSelector((state) => ({ ...state.cart }));
-  const { first, last, email, address, country, city } = user ?? {};
+  const { user } = useSelector((state) => state.user);
+  const { delivery } = useSelector(state => state.cart);
+  const total = useSelector(selectCartTotal);
+  const { first, last, email, city, country, gender } = user ?? {};
   const {
     formValues,
     validate,
     register,
     handleOnChange,
     isValid,
-  } = useFormValidation({
-    formName: "checkout",
-    defaultValues: { ...user, ...defaultValues },
-  });
+  } = useFormValidation({ formName: "checkout" });
+  useEffect(() => {
+    !formValues["checkout"] && register(defaultValues);
+  }, []);
 
-  React.useEffect(() => register({ ...user, ...defaultValues }), [user]);
-  React.useEffect(() => {
+  useEffect(() => {
     validate(formValues["checkout"] ?? {});
   }, [formValues]);
-
-  React.useEffect(() => {
-    handleAuthentication();
-  }, [user]);
-
-  const handleDeliveryOnChange = (e, value) => {
+  const handleOnChangeDelivery = (e, value) => {
     handleOnChange(e, value);
     dispatch(setDelivery(value));
+    const shippingCost = value === 'standard' ? 0 : 20
+    localStorage.setItem("total", total + shippingCost);
   };
-
   return (
     <>
       <section
@@ -62,7 +57,7 @@ const Checkout = () => {
                     title="standard"
                     value={delivery}
                     message="Free by airline within 20 days"
-                    onChange={(e) => handleDeliveryOnChange(e, "standard")}
+                    onChange={(e) => handleOnChangeDelivery(e, "standard")}
                   />
                 </div>
                 <div className="form-group col-sm-6">
@@ -70,7 +65,7 @@ const Checkout = () => {
                     title="fast"
                     value={delivery}
                     message="Extra 20$ will be charged"
-                    onChange={(e) => handleDeliveryOnChange(e, "fast")}
+                    onChange={(e) => handleOnChangeDelivery(e, "fast")}
                   />
                 </div>
               </div>
@@ -102,8 +97,8 @@ const Checkout = () => {
                 <Input.Select
                   name="country"
                   options={options}
-                  value={country}
                   label="Country"
+                  value={country}
                   col="6"
                   onChange={handleOnChange}
                 />
@@ -117,7 +112,6 @@ const Checkout = () => {
               <Input.TextArea
                 label="Address"
                 name="address"
-                value={address}
                 onChange={handleOnChange}
               />
             </div>
