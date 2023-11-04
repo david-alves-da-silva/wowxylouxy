@@ -25,20 +25,17 @@ const ErrorMessage = ({ error }) =>
 	);
 
 const defaultValues = {
-	first: "sandy",
-	last: "last",
-	email: "sandy@gmail.com",
+	first: "Name",
+	last: "Last Name",
+	email: "Your Mail Adress",
 	gender: "Female",
 	city: "city",
-	password: "test12345",
-	confirm_password: "test12345",
+	password: "test123",
+	confirm_password: "test123",
 };
 const options = [
-	"Uzbekistan",
-	"Russia",
-	"United States",
-	"India",
-	"Afganistan",
+	"France",
+	"Portugal",
 ];
 const Register = () => {
 	const history = useHistory()
