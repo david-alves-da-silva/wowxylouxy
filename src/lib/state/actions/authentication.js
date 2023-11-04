@@ -1,18 +1,17 @@
-import {
-    LOGIN,
-    SIGNOUT
-} from './actionTypes'
+import { LOGIN, LOGOUT } from "./actionTypes";
 
-export const handleAuthenticationError = (err) => {
+export const handleAuthenticationErrors = (err) => {
     return {
         type: LOGIN,
-        payload: { user: null, error: err }
+        payload: { user: null, error: err },
     };
-}
+};
 export const handleLogin = (user) => {
     return {
         type: LOGIN,
-        payload: { user: user, error: null }
+        payload: { user: user, error: null },
     };
-}
-export const handleLogout = () => ({ type: SIGNOUT })
+};
+export const handleLogout = () => {
+    return { type: LOGOUT };
+};

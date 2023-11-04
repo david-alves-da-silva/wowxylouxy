@@ -1,24 +1,23 @@
-import {
-    LOGIN, 
-    SIGNOUT
-} from '../actions/actionTypes'
+import { LOGIN, LOGOUT } from "../actions/actionTypes";
 
 const initialState = {
-    current: null, 
-    error : null
+    user: null,
+    error: null,
 };
-const user = (state = initialState, { type, payload }) => { 
-    console.log(type)
-    switch (type) { 
+const user = (state = initialState, { type, payload }) => {
+    switch (type) {
         case LOGIN:
-        if (state.current) { return state } 
-        return {
-            current: payload.user, 
-            error: payload.error, 
-        }
-        case SIGNOUT: return initialState
-    default:
-      return state;
-    } 
-}
-export default user
+            if (state.user) {
+                return state;
+            }
+            return {
+                user: payload.user,
+                error: payload.error,
+            };
+        case LOGOUT:
+            return initialState;
+        default:
+            return state;
+    }
+};
+export default user;

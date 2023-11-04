@@ -1,4 +1,3 @@
-import { addOrder, getProducts } from '../../service';
 import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
@@ -8,91 +7,92 @@ import {
   GET_PRODUCTS_FAILURE,
   UPDATE_CART,
   CHECKOUT,
-  SET_DELIVERY_CHOICE
-} from './actionTypes'
+  SET_DELIVERY_CHOICE,
+} from "./actionTypes";
+import { getProducts, addOrder } from "../../service";
 
 const returnProductsArrays = (items) => {
-  let TwoDimensionalArray = []
-  let remainder = items.length % 9
-  let i = 0
-  while (i < (items.length - remainder)) {
-    let array = items.slice(i, i + 9)
-    TwoDimensionalArray.push(array)
-    i += 9
+  let TwoDimensionalArray = [];
+  let remainder = items.length % 9;
+  let i = 0;
+  while (i < items.length - remainder) {
+    let array = items.slice(i, i + 9);
+    TwoDimensionalArray.push(array);
+    i += 9;
   }
-  const array = items.slice(i)
-  TwoDimensionalArray.push(array)
-  return TwoDimensionalArray
-}
+  const array = items.slice(i);
+  TwoDimensionalArray.push(array);
+  return TwoDimensionalArray;
+};
 
 export function getProductsPending() {
   return {
-    type: GET_PRODUCTS_PENDING
+    type: GET_PRODUCTS_PENDING,
   };
 }
 export function getProductsSuccess(data) {
   return {
     type: GET_PRODUCTS_SUCCESS,
-    payload: { data }
+    payload: { data },
   };
 }
 export function getProductsFailure(error) {
   return {
     type: GET_PRODUCTS_FAILURE,
-    payload: { error }
+    payload: { error },
   };
 }
 export function addToCart(product) {
   return {
     type: ADD_TO_CART,
-    payload: { product }
+    payload: { product },
   };
 }
 export function updateCart(id, quantity) {
   return {
     type: UPDATE_CART,
-    payload: { id, quantity }
+    payload: { id, quantity },
   };
 }
 export function setDelivery(choice) {
   return {
     type: SET_DELIVERY_CHOICE,
-    payload: { choice }
+    payload: { choice },
   };
 }
 export function removeFromCart(id) {
   return {
     type: REMOVE_FROM_CART,
-    payload: { id }
+    payload: { id },
   };
 }
 export function checkout() {
   return {
-    type: CHECKOUT
+    type: CHECKOUT,
   };
 }
 export function setPage(index) {
   return {
     type: SET_PAGE_INDEX,
-    payload: { index }
+    payload: { index },
   };
 }
 
-// Networking
-export function fetchProducts() {
+// Networking - MongoDB
+export const fetchProducts = () => {
   return async function (dispatch) {
-    dispatch(getProductsPending())
+    dispatch(getProductsPending);
     getProducts()
-      .then(response => returnProductsArrays(response.data))
-      .then(data => setTimeout(() => dispatch(getProductsSuccess(data)), 1000))
-      .catch(err => dispatch(getProductsFailure(err)))
-  }
-}
+      .then((response) => returnProductsArrays(response.data))
+      .then((productsData) => dispatch(getProductsSuccess(productsData)))
+      .catch((err) => dispatch(getProductsFailure(err)));
+  };
+};
 
-export function saveOrder(order) {
+export const saveOrder = (order) => {
   return async function (dispatch) {
     addOrder(order)
       .then(() => dispatch(checkout()))
-      .catch(err => console.log(err))
-  }
-}
+      .catch((err) => console.log(err));
+  };
+};

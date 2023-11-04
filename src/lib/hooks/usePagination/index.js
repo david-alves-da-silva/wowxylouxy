@@ -2,23 +2,23 @@ import React from 'react';
 import { data } from '../../data/products';
 
 const PaginationContext = React.createContext()
-export const usePagination = () => { 
+export const usePagination = () => {
     const context = React.useContext(PaginationContext)
-    if (!context) { 
+    if (!context) {
         throw Error('context must be within Provider')
     }
     return context
 }
 
-const PaginationProvider = ({ children }) => { 
+const PaginationProvider = ({ children }) => {
     const [PageIndex, setPageIndex] = React.useState(0)
-    const updatePage = (event, index) => { 
+    const updatePage = (event, index) => {
         event.preventDefault()
         setPageIndex(index)
     }
-    const value = React.useMemo(() => { 
+    const value = React.useMemo(() => {
         return {
-            PageIndex, 
+            PageIndex,
             updatePage
         }
     }, [PageIndex])
