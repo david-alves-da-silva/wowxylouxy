@@ -12,7 +12,7 @@ const defaultValues = {
   address: "",
 };
 
-const options = ["Canada", "Russia", "United States", "India", "Afganistan"];
+const options = ["France", "Portugal"];
 
 const Checkout = () => {
   const dispatch = useDispatch();

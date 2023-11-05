@@ -66,7 +66,7 @@ export const addOrder = (body) => {
 
 //stripe
 export const processPayment = async (order) => {
-    var stripePromise = loadStripe("pk_test_Y5ScLHaUyFGQYd13cNJeEMFx");
+    var stripePromise = loadStripe("pk_test_51O8oHIBa72leVPcBSZjm1c46fuDxOGei7DFWkv8rTAaIi0nrvlKKQsDXjxNyuxfDzOmYBbH1ExKXv9LhbW5DSqfP00H5FHDQ2i");
     const stripe = await stripePromise;
     axios.post("api/create-checkout-session", order).then((response) => {
         const sessionID = response.data.id;
