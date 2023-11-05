@@ -8,8 +8,8 @@ const Layout = ({ children }) => (
     <Router>
         <div style={{ height: 'auto', overflow: 'auto' }}>
             <div className="fixed-top">
-                <Header />
                 <Nav />
+                <Header />
             </div>
             {children}
             <div className="fixed-bottom">

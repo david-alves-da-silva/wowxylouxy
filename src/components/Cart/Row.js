@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { removeFromCart, updateCart } from "../../lib/state/actions";
 const Row = ({ id, name, price, quantity }) => {
@@ -9,6 +9,11 @@ const Row = ({ id, name, price, quantity }) => {
     const removeFromCartAction = (e) => {
         e.preventDefault();
         dispatch(removeFromCart(id));
+    };
+    const [liked, setLiked] = useState(false);
+
+    const toggleLike = () => {
+        setLiked(!liked);
     };
     return (
         <tr>
@@ -35,6 +40,11 @@ const Row = ({ id, name, price, quantity }) => {
                     <option>3</option>
                     <option>4</option>
                     <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
                 </select>
             </td>
             <td>
@@ -46,13 +56,14 @@ const Row = ({ id, name, price, quantity }) => {
                 <a
                     data-original-title="Save to Wishlist"
                     title=""
-                    href=""
+                    href="#"
                     className="btn btn-light"
                     data-toggle="tooltip"
-                    onClick={() => null}
+                    // onClick={() => null}
+                    onClick={toggleLike}
                 >
                     {" "}
-                    <i className="fa fa-heart"></i>
+                    <i className={`fas fa-heart ${liked ? ' text-danger fa-lg ' : 'text-dark'}`}></i>
                 </a>
                 <a
                     href=""

@@ -42,7 +42,7 @@ const Header = () => {
 	const { user } = useSelector((state) => state.user);
 	const quantity = items.length > 0 ? items.length : "";
 	return (
-		<nav className="navbar d-flex p-md-0 navbar-expand-lg navbar-light bg-light border-bottom">
+		<nav className="navbar d-flex p-md-0 navbar-expand navbar-light bg-light border-bottom">
 			<div className="container-fluid">
 				<button
 					className="navbar-toggler"
@@ -58,7 +58,7 @@ const Header = () => {
 				<div className="collapse navbar-collapse" id="navbarTop4">
 					<ul className="navbar-nav mr-auto">
 						<UserLogin user={user} />
-						<li>
+						{/* <li>
 							<a href="#" className="nav-link" disabled={true}>
 								{" "}
 								Deals{" "}
@@ -68,10 +68,10 @@ const Header = () => {
 							<Link className="nav-link" to={"/help"}>
 								Help
 							</Link>
-						</li>
+						</li> */}
 					</ul>
 					<ul className="navbar-nav">
-						<li>
+						{/* <li>
 							<a href="#" className="nav-link">
 								{" "}
 								<img src="images/icons/flags/US.png" height="16" /> Ship to{" "}
@@ -115,7 +115,7 @@ const Header = () => {
 								{" "}
 								<i className="fas fa-bell"></i>
 							</a>
-						</li>
+						</li> */}
 						<li>
 							<Link to={"/cart"} className="nav-link">
 								<i className="fas fa-shopping-cart"></i>

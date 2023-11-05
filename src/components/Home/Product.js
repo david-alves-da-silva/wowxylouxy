@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../lib/state/actions";
 
 const Product = ({ id, name, price, category }) => {
     const dispatch = useDispatch();
     const addToCartAction = () => dispatch(addToCart({ id, name, price }));
+    const [liked, setLiked] = useState(false);
+
+    const toggleLike = () => {
+        setLiked(!liked);
+    };
+
     return (
         <div className="col-sm-4 col-6">
             <div className="card card-product-grid">
@@ -34,9 +40,15 @@ const Product = ({ id, name, price, category }) => {
                         className="btn-group btn-group-toggle float-right"
                         data-toggle="buttons"
                     >
-                        <label className="btn btn-warning active">
-                            <input type="radio" name="options" id="option1" checked />
-                            <i className="fas fa-heart"></i>
+                        <label className={`btn btn-light active ${liked ? 'bg-light' : 'bg-light'}`}>
+                            <input
+                                // Like
+                                onClick={toggleLike}
+                                type="radio"
+                                name="options"
+                                id="option1"
+                            />
+                            <i className={`fas fa-heart ${liked ? ' text-danger fa-lg ' : 'text-dark'}`}></i>
                         </label>
 
                         <label className="btn btn-success">

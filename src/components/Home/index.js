@@ -157,7 +157,7 @@ const Home = () => {
   }, []);
   return (
     <div className="container" style={{ marginTop: "130px" }}>
-      {/* Content here */}
+      <Slider />
       <Deals />
       <Gallery />
     </div>

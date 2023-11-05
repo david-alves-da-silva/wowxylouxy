@@ -50,7 +50,6 @@ const useAuthentication = (dispatch) => {
                     const currentUser = await app.currentUser;
                     // retrieve user profile
                     getUser(currentUser).then((userProfile) => {
-                        console.log(userProfile)
                         dispatch(handleLogin(userProfile));
                         resolve(userProfile);
                     });
