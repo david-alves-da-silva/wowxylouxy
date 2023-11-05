@@ -2,7 +2,8 @@ import axios from "axios";
 import { loadStripe } from "@stripe/stripe-js";
 
 // API
-const API_BASE_URL = "http://localhost:8000";
+// const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = "https://backend-y06y.onrender.com";
 
 // GET
 export const getProducts = () => {
