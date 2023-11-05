@@ -24,15 +24,15 @@ const ErrorMessage = ({ error }) =>
 		</div>
 	);
 
-const defaultValues = {
-	first: "Name",
-	last: "Last Name",
-	email: "Your Mail Adress",
-	gender: "Female",
-	city: "city",
-	password: "test123",
-	confirm_password: "test123",
-};
+// const defaultValues = {
+// first: "Name",
+// last: "Last Name",
+// email: "Your Mail Adress",
+// gender: "Female",
+// city: "city",
+// password: "test123",
+// confirm_password: "test123",
+// };
 const options = [
 	"France",
 	"Portugal",
@@ -45,7 +45,7 @@ const Register = () => {
 	const {
 		formValues,
 		validate,
-		register,
+		// register,
 		handleOnChange,
 		isValid,
 	} = useFormValidation({ formName: "register" });
@@ -59,12 +59,12 @@ const Register = () => {
 		password,
 		confirm_password,
 	} = formValues["register"] ?? {};
-	useEffect(() => {
-		register(defaultValues);
-	}, []);
+	// useEffect(() => {
+	// 	register(defaultValues);
+	// }, []);
 	useEffect(() => {
 		validate(formValues["register"] ?? {});
-	}, [formValues]);
+	}, [formValues, validate]);
 
 	const handleOnSubmit = (e) => {
 		e.preventDefault();

@@ -29,7 +29,7 @@ const ErrorMessage = ({ error }) => {
 
 
 const defaultValues = {
-  email: "sandy@gmail.com",
+  email: "",
   password: "",
 };
 const Login = () => {
