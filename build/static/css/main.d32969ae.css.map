@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.d32969ae.css","mappings":"AAAA,qBACI,0BACJ,CAEA,sBACI,wBAEJ","sources":["styles/Styles.module.css"],"sourcesContent":[".fundo {\n    background-color: #d47bc186;\n}\n\n.bgroxo {\n    background-color: #913acf;\n\n}"],"names":[],"sourceRoot":""}
