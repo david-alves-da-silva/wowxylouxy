@@ -49,7 +49,7 @@ const CartTotal = () => {
 					</dl>
 					<hr />
 					<p className="text-center mb-3">
-						<img src="images/misc/payments.png" height="26" />
+						<img src="images/misc/payments.png" alt="belle" height="26" />
 					</p>
 				</div>
 			</div>
