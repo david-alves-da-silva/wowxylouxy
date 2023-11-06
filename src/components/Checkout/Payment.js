@@ -29,7 +29,7 @@ function Payment({ isValid }) {
       onClick={() => processPayment(orderWithShipping)}
       disabled={isValid}
     >
-      Checkout
+      Vérifier
     </button>
   );
 }

@@ -9,8 +9,7 @@ const Alert = ({ isVisible }) =>
 	isVisible && (
 		<div className="alert alert-info mt-3">
 			<p className="icontext">
-				<i className="icon text-primary fa fa-thumbs-up"></i>User successfully
-				created
+				<i className="icon text-primary fa fa-thumbs-up"></i>utilisateur crée avec succès!
 			</p>
 		</div>
 	);
@@ -79,7 +78,7 @@ const Register = () => {
 			confirm_password,
 		};
 		handleUserRegistration(newUser).then((user) => {
-			console.log(`user successfully registered ${user}`);
+			console.log(`Utilisateur ${user} enregistré avec succès`);
 			user && setTimeout(() => history.push("/"), 2000);
 		});
 	};
@@ -91,7 +90,7 @@ const Register = () => {
 			>
 				<article className="card-body">
 					<header className="mb-4">
-						<h4 className="card-title">Sign up</h4>
+						<h4 className="card-title">Enregistrer</h4>
 					</header>
 					{/* feedback et message d'erreurs */}
 					<ErrorMessage error={error} />
@@ -99,13 +98,13 @@ const Register = () => {
 					<form name="register" onSubmit={handleOnSubmit}>
 						<div className="form-row">
 							<Input.Text
-								label="First Name"
+								label="Prénom"
 								name="first"
 								value={first}
 								onChange={handleOnChange}
 							/>
 							<Input.Text
-								label="Label Name"
+								label="Nome"
 								name="last"
 								value={last}
 								onChange={handleOnChange}
@@ -122,13 +121,13 @@ const Register = () => {
 						<div className="form-group">
 							<Input.Radio
 								name="gender"
-								label="Male"
+								label="Masculin"
 								value={gender}
 								onChange={handleOnChange}
 							/>
 							<Input.Radio
 								name="gender"
-								label="Female"
+								label="Féminin"
 								value={gender}
 								onChange={handleOnChange}
 							/>
@@ -136,7 +135,7 @@ const Register = () => {
 						<div className="form-row">
 							<Input.Text
 								name="city"
-								label="City"
+								label="Ville"
 								value={city}
 								onChange={handleOnChange}
 								col="6"
@@ -144,7 +143,7 @@ const Register = () => {
 							<Input.Select
 								name="country"
 								options={options}
-								label="Country"
+								label="Pays"
 								value={country}
 								col="6"
 								onChange={handleOnChange}
@@ -153,14 +152,14 @@ const Register = () => {
 
 						<div className="form-row">
 							<Input.Password
-								label="Create password"
+								label="Créer un mot de passe"
 								style={{ padding: 0 }}
 								col="6"
 								value={password}
 								onChange={handleOnChange}
 							/>
 							<Input.ConfirmPassword
-								label="Repeat password"
+								label="Répéter le mot de passe"
 								style={{ padding: 0 }}
 								col="6"
 								value={confirm_password}
@@ -178,7 +177,7 @@ const Register = () => {
 				</article>
 			</div>
 			<p className="text-center mt-4">
-				Have an account? <Link to="/login">Log In</Link>
+				Avez vous déjà un compte? <Link to="/login">Se connecter</Link>
 			</p>
 			<br />
 			<br />

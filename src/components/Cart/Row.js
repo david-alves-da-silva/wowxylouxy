@@ -41,10 +41,6 @@ const Row = ({ id, name, price, quantity }) => {
                     <option>4</option>
                     <option>5</option>
                     <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
                 </select>
             </td>
             <td>
@@ -71,7 +67,7 @@ const Row = ({ id, name, price, quantity }) => {
                     onClick={removeFromCartAction}
                 >
                     {" "}
-                    Remove
+                    Retirer
                 </a>
             </td>
         </tr>

@@ -49,7 +49,7 @@ const Checkout = () => {
         <div className="container">
           <div className="card mb-4">
             <div className="card-body">
-              <h4 className="card-title mb-3">Delivery info</h4>
+              <h4 className="card-title mb-3"> Informations de livraison</h4>
 
               <div className="form-row">
                 <div className="form-group col-sm-6">
@@ -72,13 +72,13 @@ const Checkout = () => {
 
               <div className="form-row">
                 <Input.Text
-                  label="First name"
+                  label="Prénom"
                   name="first"
                   value={first}
                   onChange={handleOnChange}
                 />
                 <Input.Text
-                  label="Last name"
+                  label="Nom"
                   name="last"
                   value={last}
                   onChange={handleOnChange}
@@ -97,20 +97,20 @@ const Checkout = () => {
                 <Input.Select
                   name="country"
                   options={options}
-                  label="Country"
+                  label="Pays"
                   value={country}
                   col="6"
                   onChange={handleOnChange}
                 />
                 <Input.Text
-                  label="City"
+                  label="Ville"
                   name="city"
                   value={city}
                   onChange={handleOnChange}
                 />
               </div>
               <Input.TextArea
-                label="Address"
+                label="Adresse"
                 name="address"
                 onChange={handleOnChange}
               />

@@ -8,13 +8,13 @@ const Deals = () => (
     <div className="card card-deal">
       <div className="col-heading content-body">
         <header className="section-heading">
-          <h3 className="section-title">Deals and offers</h3>
-          <p>Hygiene equipments</p>
+          <h3 className="section-title">Catalogue D'hiver</h3>
+          <p>Bougies Parfumées</p>
         </header>
         <div className="timer">
           <div>
             {" "}
-            <span className="num">04</span> <small>Days</small>
+            <span className="num">21</span> <small>Days</small>
           </div>
           <div>
             {" "}
@@ -38,7 +38,7 @@ const Deals = () => (
             </a>
             <div className="text-wrap p-3">
               <a href="#" className="title">
-                Summer clothes
+                Une douce chaleur hivernale.
               </a>
               <span className="badge badge-danger"> -20% </span>
             </div>
@@ -51,7 +51,7 @@ const Deals = () => (
             </a>
             <div className="text-wrap p-3">
               <a href="#" className="title">
-                Some category
+                Une atmosphère accueillante.
               </a>
               <span className="badge badge-danger"> -5% </span>
             </div>
@@ -64,7 +64,7 @@ const Deals = () => (
             </a>
             <div className="text-wrap p-3">
               <a href="#" className="title">
-                Another category
+                Saison d'hiver.
               </a>
               <span className="badge badge-danger"> -20% </span>
             </div>
@@ -77,7 +77,7 @@ const Deals = () => (
             </a>
             <div className="text-wrap p-3">
               <a href="#" className="title">
-                Home apparel
+                Enveloppez votre chez-vous.
               </a>
               <span className="badge badge-danger"> -15% </span>
             </div>
@@ -90,7 +90,7 @@ const Deals = () => (
             </a>
             <div className="text-wrap p-3">
               <a href="#" className="title text-truncate">
-                Smart watches
+                Une touche chaleureuse.
               </a>
               <span className="badge badge-danger"> -10% </span>
             </div>

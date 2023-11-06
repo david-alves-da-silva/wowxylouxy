@@ -11,7 +11,7 @@ const DeliveryBox = ({ value, title, message, onChange }) => {
                 onChange={onChange}
                 checked={isSelected}
             />
-            <h6 className="title">{title} delivery</h6>
+            <h6 className="title">{title} livraison</h6>
             <p className="text-muted">{message}</p>
         </label>
     );

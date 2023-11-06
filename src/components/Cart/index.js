@@ -19,7 +19,7 @@ const Cart = () => {
 						className="d-flex justify-content-center align-items-center"
 						style={{ fontSize: 20 }}
 					>
-						Your Cart is Empty
+						Votre panier est vide
 					</p>
 				)}
 				{items.map((item) => (

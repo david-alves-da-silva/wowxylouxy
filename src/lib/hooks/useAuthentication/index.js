@@ -37,7 +37,7 @@ const useAuthentication = (dispatch) => {
             ?.logOut()
             .then(() => {
                 dispatch(handleLogout());
-                console.log("user successfully log out");
+                console.log("Déconnecté avec succès!");
             })
             .catch((err) => console.log(err));
     }

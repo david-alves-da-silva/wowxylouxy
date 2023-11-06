@@ -11,7 +11,7 @@ const CartTotal = () => {
 				<div className="card-body">
 					<form>
 						<div className="form-group">
-							<label>Have coupon?</label>
+							<label>Vous avez un coupon ?</label>
 							<div className="input-group">
 								<input
 									type="text"
@@ -20,7 +20,7 @@ const CartTotal = () => {
 									placeholder="Coupon code"
 								/>
 								<span className="input-group-append">
-									<button className="btn btn-primary">Apply</button>
+									<button className="btn btn-primary">Appliquer</button>
 								</span>
 							</div>
 						</div>
@@ -34,11 +34,11 @@ const CartTotal = () => {
 						<dd className="text-right">${total}</dd>
 					</dl>
 					<dl className="dlist-align">
-						<dt>Delivery:</dt>
+						<dt>Livraison:</dt>
 						<dd className="text-right">${deliveryCost}</dd>
 					</dl>
 					<dl className="dlist-align">
-						<dt>Discount:</dt>
+						<dt>Rabais:</dt>
 						<dd className="text-right">---</dd>
 					</dl>
 					<dl className="dlist-align">

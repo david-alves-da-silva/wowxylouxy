@@ -9,8 +9,8 @@ const CartTable = ({ children }) => {
                     <thead className="text-muted">
                         <tr className="small text-uppercase">
                             <th scope="col">Product</th>
-                            <th scope="col" width="120">Quantity</th>
-                            <th scope="col" width="120">Price</th>
+                            <th scope="col" width="120">Quantité</th>
+                            <th scope="col" width="120">Prix</th>
                             <th scope="col" className="text-right" width="200"> </th>
                         </tr>
                     </thead>
@@ -21,7 +21,7 @@ const CartTable = ({ children }) => {
                 <CartFooter />
             </div>
             <div className="alert alert-success mt-3">
-                <p className="icontext"><i className="icon text-success fa fa-truck"></i> Free Delivery within 1-2 weeks</p>
+                <p className="icontext"><i className="icon text-success fa fa-truck"></i> Livraison gratuite sous 1 à 2 semaines</p>
             </div>
         </>
     )

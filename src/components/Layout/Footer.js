@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <nav className={`navbar fixed-bottom navbar-dark d-flex justify-content-center ${Styles.bgroxo}`}>
       <Link className="navbar-brand" to="/">
-        <small>© Rights Reserved {new Date().getFullYear()}</small>
+        <small>© droits réservés {new Date().getFullYear()}</small>
       </Link>
     </nav>)
 }

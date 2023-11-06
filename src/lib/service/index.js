@@ -12,7 +12,7 @@ export const getProducts = () => {
             .get(`${API_BASE_URL}/api/products`)
             .then((response, error) => {
                 if (!response || error) {
-                    return onFail(`Response failure : ${error}`);
+                    return onFail(`Échec de la réponse : ${error}`);
                 }
                 onSuccess(response);
             })
@@ -32,7 +32,7 @@ export const getUser = (body) => {
             })
             .then((response, error) => {
                 if (!response || error) {
-                    return onFail(`Response failure : ${error}`);
+                    return onFail(`Échec de la réponse : ${error}`);
                 }
                 onSuccess(response.data);
             })
@@ -49,7 +49,7 @@ export const addUser = (body) => {
                 if (!response || error) {
                     return onFail(`Response failure : ${error}`);
                 }
-                onSuccess(`user profile successfully created`);
+                onSuccess(`profil utilisateur créé avec succès`);
             })
             .catch((err) => onFail(err));
     });
@@ -63,7 +63,7 @@ export const addOrder = (body) => {
                 if (!response || error) {
                     return onFail(`Response failure : ${error}`);
                 }
-                onSuccess(`order successfully saved`);
+                onSuccess(`commande enregistrée avec succès`);
             })
             .catch((err) => onFail(err));
     });

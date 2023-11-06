@@ -49,8 +49,7 @@ function Success({ history }) {
         className="d-flex justify-content-center align-items-center">
         <div className="alert alert-success mt-3 mb-3">
           <p className="icontext">
-            <i className="icon text-success fa fa-thumbs-up"></i>Thank you for
-            your order &amp; your payment
+            <i className="icon text-success fa fa-thumbs-up"></i>Merci pour votre commande &amp; votre paiement
           </p>
         </div>
       </div>

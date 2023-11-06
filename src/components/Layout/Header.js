@@ -18,17 +18,17 @@ const UserLogin = ({ user }) => {
 					{!!user ? (
 						<>
 							<button className="btn btn-danger btn-sm" onClick={logout}>
-								logout
+								Sortir
 							</button>{" "}
 							<span>
 								{" "}
-								<b>Hi, {user?.first}</b>
+								<b>Salut, {user?.first}</b>
 							</span>
 						</>
 					) : (
 						<span>
-							<Link to={"/login"}>login</Link> or{" "}
-							<Link to={"/register"}>register</Link>
+							<Link to={"/login"}>Connecter</Link> ou{" "}
+							<Link to={"/register"}>Registrer</Link>
 						</span>
 					)}
 				</span>
