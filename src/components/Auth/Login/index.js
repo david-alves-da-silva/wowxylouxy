@@ -9,8 +9,7 @@ const Alert = ({ isVisible }) =>
   isVisible && (
     <div className="alert alert-info mt-3">
       <p className="icontext">
-        <i className="icon text-primary fa fa-thumbs-up"></i>User successfully
-        connected
+        <i className="icon text-primary fa fa-thumbs-up"></i>Utilisateur connecté
       </p>
     </div>
   );
@@ -64,7 +63,7 @@ const Login = () => {
         style={{ maxWidth: "380px", marginTop: "200px" }}
       >
         <div className="card-body">
-          <h4 className="card-title mb-4">Sign in</h4>
+          <h4 className="card-title mb-4">Se connecter</h4>
           {/* feedback et message d'erreurs */}
           <ErrorMessage error={error} />
           <Alert isVisible={!!user} />
@@ -75,7 +74,7 @@ const Login = () => {
           */}
             <div className="form-group" style={{ marginBottom: 0 }}>
               <Input.Email
-                label="Email"
+                label="Adresse e-mail"
                 style={{ padding: 0 }}
                 onChange={handleOnChange}
                 value={email}
@@ -83,7 +82,7 @@ const Login = () => {
             </div>
             <div className="form-group">
               <Input.Password
-                label="Password"
+                label="Mot de passe"
                 name="password"
                 style={{ padding: 0 }}
                 onChange={handleOnChange}
@@ -91,12 +90,12 @@ const Login = () => {
               />
             </div>
             <div className="form-group">
-              <Input.Checkbox col="6">Remember</Input.Checkbox>
+              <Input.Checkbox col="6">Se souvenir</Input.Checkbox>
             </div>
             <div className="form-group">
               <Input.Submit
                 classNames="btn-primary btn-block"
-                title="Login"
+                title="Se connecter"
                 disabled={!isValid}
               />
             </div>
@@ -104,7 +103,7 @@ const Login = () => {
         </div>
       </div>
       <p className="text-center mt-4">
-        Don't have account? <Link to="/register">Sign Up</Link>
+        Avez vous déjà un compte? <Link to="/register">Se connecter</Link>
       </p>
       <br />
       <br />
