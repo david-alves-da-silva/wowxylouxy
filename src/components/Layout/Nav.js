@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import Styles from '../../styles/Styles.module.css'
+
 
 const Nav = () => {
   const links = ["Home", "About"]
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-primary">
+    <nav className={`navbar navbar-expand-md navbar-dark ${Styles.bgroxo}`}>
       <Link className="navbar-brand" to={'/'}><b>Wowxylouxy Candles</b></Link>
 
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

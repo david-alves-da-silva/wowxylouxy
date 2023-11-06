@@ -4,6 +4,7 @@ const About = () => (
 	<section className="section-content padding-y" style={{ marginTop: '100px' }}>
 		<div className="container">
 			<header className="section-heading">
+				<br /><br /><br />
 				<h2 className="section-title">À propos de moi</h2>
 			</header>
 			<article>
@@ -22,6 +23,7 @@ const About = () => (
 					Maintenant que vous me connaissez un peu mieux, allez découvrir mon travail et amusez-vous !
 					Au revoir !
 				</p>
+				<br /><br /><br />
 			</article>
 		</div>
 	</section>

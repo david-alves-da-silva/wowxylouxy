@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Nav from './Nav'
 import Header from './Header'
 import Footer from './Footer'
+import Styles from '../../styles/Styles.module.css'
 
 const Layout = ({ children }) => (
     <Router>

@@ -13,6 +13,7 @@ import Success from "./Checkout/Success";
 import Cancel from "./Checkout/Cancel";
 import Cart from "./Cart";
 import Layout from "./Layout";
+import Styles from '../styles/Styles.module.css';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -21,20 +22,22 @@ const App = () => {
     handleAuthentication();
   }, []);
   return (
-    <Layout>
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/help" component={Help} />
-      <Route path="/deals" component={Deals} />
+    <div className={Styles.fundo}>
+      <Layout>
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/help" component={Help} />
+        <Route path="/deals" component={Deals} />
 
-      <Route path="/register" component={Register} />
-      <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/login" component={Login} />
 
-      <Route path="/cart" component={Cart} />
-      <Route path="/checkout" component={Checkout} />
-      <Route path="/success" component={Success} />
-      <Route path="/cancel" component={Cancel} />
-    </Layout>
+        <Route path="/cart" component={Cart} />
+        <Route path="/checkout" component={Checkout} />
+        <Route path="/success" component={Success} />
+        <Route path="/cancel" component={Cancel} />
+      </Layout>
+    </div>
   );
 };
 export default App;
